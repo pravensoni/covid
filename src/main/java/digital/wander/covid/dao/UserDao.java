@@ -24,6 +24,13 @@ public class UserDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	
+	/**
+	 * Validates a user 
+	 * @param userName
+	 * @param pass
+	 * @return user information
+	 */
 	public UserInfo validateUser(String userName, String pass) {
 		UserInfo userInfo = null;
 		try {
@@ -44,6 +51,12 @@ public class UserDao {
 		return userInfo;
 	}
 
+	/**
+	 * Saves user information to database
+	 * @param userInfo
+	 * @return
+	 * @throws DuplicateKeyException
+	 */
 	public Long insertUser(UserInfo userInfo) throws DuplicateKeyException {
 		KeyHolder holder = new GeneratedKeyHolder();
 		Long custumerId = null;

@@ -21,7 +21,12 @@ public class TokenUtils {
 	@Value("${jwt.secret}")
 	private String secret;
 
-	// retrieve username from jwt token
+	
+	/**
+	 * retrieve username from jwt token
+	 * @param token
+	 * @return username
+	 */
 	public String getUsernameFromToken(String token) {
 		return getClaimFromToken(token, Claims::getSubject);
 	}
@@ -47,7 +52,12 @@ public class TokenUtils {
 		return expiration.before(new Date());
 	}
 
-	// generate token for user
+	
+	/**
+	 * 
+	 * @param userName
+	 * @return generated token
+	 */
 	public String generateToken(String userName) {
 		Map<String, Object> claims = new HashMap<>();
 		return doGenerateToken(claims, userName);
@@ -61,7 +71,13 @@ public class TokenUtils {
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
-	// validate token
+	
+	/**
+	 * validates token
+	 * @param token
+	 * @param userName
+	 * @return
+	 */
 	public Boolean validateToken(String token, String userName) {
 		final String usernameToken = getUsernameFromToken(token);
 		return (usernameToken.equals(userName) && !isTokenExpired(token));

@@ -20,6 +20,11 @@ public class DashboardDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	
+	
+	/**
+	 * @return ReportedData from the database
+	 */
 	public ReportedData getOverAllData() {
 		ReportedData rd = null;
 		try {
@@ -46,6 +51,9 @@ public class DashboardDao {
 		return rd;
 	}
 
+	/**
+	 * @return Statewise Data
+	 */
 	public List<StateReportedData> getStateReportedData() {
 		List<StateReportedData> rd = null;
 		try {
@@ -72,7 +80,13 @@ public class DashboardDao {
 		return rd;
 	}
 
+	
+	/**
+	 * @param type : can be confirmed,active,recovered,deceased
+	 * @return mothwise reported data
+	 */
 	public List<GraphData> getMonthWiseData(String type) {
+		//TODO : convert type into ENUM
 		List<GraphData> gd = null;
 		try {
 			gd = jdbcTemplate.query(
