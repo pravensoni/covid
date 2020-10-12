@@ -21,11 +21,13 @@ dependencies {
 	
 	runtimeOnly 'mysql:mysql-connector-java'
 	implementation 'org.springframework.session:spring-session-core'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/junit/junit
+	//testCompile group: 'junit', name: 'junit', version: '4.12'
+	
 }
 
 test {
 	useJUnitPlatform()
+	testLogging.showStandardStreams = true
 }

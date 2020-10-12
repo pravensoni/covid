@@ -25,14 +25,15 @@ import digital.wander.covid.models.StateReportedData;
  *
  */
 
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(origins = "http://wander.praveensoni.in", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
 public class DashboardController {
 
 	@Autowired
 	DashboardDao dashboardDao;
 
-	@RequestMapping(method = RequestMethod.POST, path = "/overalldata")
+	@RequestMapping(method = RequestMethod.GET, path = "/overalldata")
 	public String overallData() {
 
 		ReportedData reportedData = dashboardDao.getOverAllData();
@@ -47,7 +48,7 @@ public class DashboardController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, path = "/statewisedata")
+	@RequestMapping(method = RequestMethod.GET, path = "/statewisedata")
 	public String statewiseData() {
 
 		List<StateReportedData> reportedData = dashboardDao.getStateReportedData();
@@ -62,7 +63,7 @@ public class DashboardController {
 
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "/monthwisedata/{type}")
+	@RequestMapping(method = RequestMethod.GET, path = "/monthwisedata/{type}")
 	public String monthwiseData(@PathVariable("type") String type) {
 
 		List<GraphData> reportedData = dashboardDao.getMonthWiseData(type);

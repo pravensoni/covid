@@ -26,7 +26,8 @@ import digital.wander.covid.utils.TokenUtils;
  *
  */
 
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(origins = "http://wander.praveensoni.in", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
 public class UserController {
 
